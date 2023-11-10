@@ -1,73 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FormulaQ Solutions</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #b0b0b0;
-        }
+      body {
+        font-family: "Arial", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #b0b0b0;
+      }
 
-        .container {
-            text-align: left;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+      .container {
+        text-align: left;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-        
-        img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-        .container2{
-            display: flex;
-            display: row;
-            align-items: center;
-            gap: 5px;
-        }
-        p {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #555;
-        }
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
+      .container2 {
+        display: flex;
+        display: row;
+        align-items: center;
+        gap: 5px;
+      }
+      p {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #555;
+      }
 
-        a {
-            color: #4285F4;
-            text-decoration: none;
-        }
+      a {
+        color: #4285f4;
+        text-decoration: none;
+      }
 
-        a:hover {
-            text-decoration: underline;
-        }
+      a:hover {
+        text-decoration: underline;
+      }
+      .signout{
+        margin-top: 6px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        
-        <p><img src="<%= pic %>"></p>
-        <div class="container2">
-            <p>Hello <%= name %></p>
-            <a href="/logout">[Sign Out]</a>
-        </div>
-        
-        <p>You are signed in with email <%= email %></p>
-        <p>Indian Time: <%= new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }) %></p>
-        
+      <p><img src="<%= pic %>" /></p>
+      <div class="container2">
+        <p>Hello <%= name %></p>
+        <a href="/logout" class="signout">[Sign Out]</a>
+      </div>
+
+      <p>You are signed in with email <%= email %></p>
+      <p>
+        Indian Time: <%= new Date().toLocaleTimeString("en-US", { timeZone:
+        "Asia/Kolkata" }) %>
+      </p>
+      <hr />
+
+      <h2>Display Design</h2>
+      <label for="numberOfLines">Number of Lines:</label>
+      <input type="number" id="numberOfLines" min="1" max="100" />
+      <button id="displayButton">Display</button>
+
+      <div class="design" id="designOutput"></div>
     </div>
-</body>
+
+    <script>
+      document
+        .getElementById("displayButton")
+        .addEventListener("click", function () {
+          displayDesign();
+        });
+
+      function displayDesign() {
+        var numberOfLines = document.getElementById("numberOfLines").value;
+        var designOutput = document.getElementById("designOutput");
+
+        // Validate the input
+        if (numberOfLines < 1 || numberOfLines > 100 || isNaN(numberOfLines)) {
+          alert("Please enter a valid number between 1 and 100.");
+          return;
+        }
+
+        function printDiamond(n) {
+    const str = "formulaQsolutions";
+    const length = str.length;
+
+    // Validate input
+    
+    const start = Math.floor(n / 2);
+
+    // Print the top half of the diamond
+    for (let i = 0; i < start; i++) {
+        let row = '';
+        for (let j = 0; j < length; j++) {
+            if (j >= start - i && j <= start + i) {
+                row += str[j];
+            } else {
+                row += ' ';
+            }
+        }
+        console.log(row);
+    }
+
+    // Print the middle line
+    console.log(str);
+
+    // Print the bottom half of the diamond
+    for (let i = start - 2; i >= 0; i--) {
+        let row = '';
+        for (let j = 0; j < length; j++) {
+            if (j >= start - i && j <= start + i) {
+                row += str[j];
+            } else {
+                row += ' ';
+            }
+        }
+        console.log(row);
+    }
+}
+
+// Example: Print a diamond shape with n = 17
+printDiamond(numberOfLines);
+
+      }
+    </script>
+  </body>
 </html>
 
 <!-- <html>
