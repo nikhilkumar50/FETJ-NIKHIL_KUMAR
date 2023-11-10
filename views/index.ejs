@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to FormulaQ Solutions</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: rgb(158, 157, 157);
+    }
+
+    .container {
+      text-align: center;
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    #googleSignInButton {
+      background-color: #4285F4;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none; 
+      display: inline-block; 
+
+    }
+
+    #googleSignInButton:hover {
+      background-color: #357ae8;
+      text-decoration: none; 
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to FormulaQ Solutions</h1>
+        <button id="googleSignInButton">Sign in</button>
+      </div>
+    
+      
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
+      
+      <script>
+        document.getElementById("googleSignInButton").addEventListener("click", function() {
+          window.location.href = "/auth/google"; 
+        });
+      </script>
+
+  
+
+  
+  
+</body>
+</html>
+
